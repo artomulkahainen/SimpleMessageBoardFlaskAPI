@@ -1,9 +1,8 @@
 from flask import Flask, jsonify, request
 from util.config import Config
-from flask_sqlalchemy import SQLAlchemy
+from models.models import db
 
 app = Flask(__name__)
-db = SQLAlchemy()
 
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{Config.PG_USER}:{Config.PG_PASSWORD}@{Config.PG_URI}:{Config.PG_PORT}/{Config.PG_DATABASE}'

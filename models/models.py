@@ -1,4 +1,7 @@
-from sqlalchemy import String, Integer, TIMESTAMP, Column
+from flask_sqlalchemy import SQLAlchemy
+import datetime
+
+db = SQLAlchemy()
 
 class BaseModel(db.Model):
     __abstract__ = True
@@ -25,6 +28,6 @@ class BaseModel(db.Model):
 class Post(BaseModel):
     __tablename__ = 'posts'
 
-    id = Column(Integer, primary_key = True)
-    post = Column(String)
-    created_at = Column(TIMESTAMP)
+    id = db.Column(db.Integer, primary_key = True)
+    post = db.Column(db.String)
+    created_at = db.Column(db.TIMESTAMP)

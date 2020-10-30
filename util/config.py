@@ -4,14 +4,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 from dotenv import load_dotenv
 load_dotenv()
 
-POSTGRES = {
-    'user': 'postgres',
-    'pw': 'password',
-    'db': 'my_database',
-    'host': 'localhost',
-    'port': '5432',
-}
-
 class Config(object):
     DEBUG = False
     TESTING = False
