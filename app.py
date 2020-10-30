@@ -1,17 +1,19 @@
 from flask import Flask, jsonify, request
 from util.config import Config
 from flask_sqlalchemy import SQLAlchemy
-from models import posts
 
 app = Flask(__name__)
+db = SQLAlchemy()
 
-app.config.from_object(Config.CONFIG_FROM_OBJECT)
+app.config['DEBUG'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{Config.PG_USER}:{Config.PG_PASSWORD}@{Config.PG_URI}:{Config.PG_PORT}/{Config.PG_DATABASE}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+
+db.init_app(app)
 
 @app.route('/')
 def get_all():
     return jsonify({'message': 'jeaa'})
 
-
-app.run(port=Config.PORT)
+if __name__ == '__main__':
+    app.run(port=Config.PORT)
