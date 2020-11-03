@@ -3,7 +3,6 @@ import datetime
 
 db = SQLAlchemy()
 
-
 class Post(db.Model):
     __tablename__ = "posts"
 
